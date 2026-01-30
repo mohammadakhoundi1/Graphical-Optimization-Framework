@@ -1,0 +1,27 @@
+{
+  "algorithm": {
+    "name_full": "Golden Eagle Optimizer",
+    "acronym": "GEO",
+    "year": "",
+    "authors": [],
+    "keywords": ["metaheuristic", "optimization"]
+  },
+  "paper": {
+    "title": "",
+    "doi": "",
+    "publisher_url": "",
+    "year": ""
+  },
+  "implementation": {
+    "language": "MATLAB",
+    "entry_point": "GEO.m",
+    "notes": "Placeholder metadata. Fill this with real information."
+  },
+  "provenance": {
+    "source_type": "",
+    "source_url": "",
+    "retrieved_on": "",
+    "license": "",
+    "modifications": ""
+  }
+}

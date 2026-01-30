@@ -1,0 +1,27 @@
+{
+  "algorithm": {
+    "name_full": "<Algorithm Full Name>",
+    "acronym": "<ACRONYM>",
+    "year": "<Year>",
+    "authors": ["<Author 1>", "<Author 2>"],
+    "keywords": ["metaheuristic", "optimization"]
+  },
+  "paper": {
+    "title": "<Paper Title>",
+    "doi": "<DOI>",
+    "publisher_url": "<Official publisher URL>",
+    "year": "<Year>"
+  },
+  "implementation": {
+    "language": "MATLAB",
+    "entry_point": "Algorithm.m",
+    "notes": "<Any important implementation notes>"
+  },
+  "provenance": {
+    "source_type": "<MathWorks | GitHub | Author code | Other>",
+    "source_url": "<Original code URL>",
+    "retrieved_on": "<YYYY-MM-DD>",
+    "license": "<License name or link>",
+    "modifications": "<Describe modifications, if any>"
+  }
+}
