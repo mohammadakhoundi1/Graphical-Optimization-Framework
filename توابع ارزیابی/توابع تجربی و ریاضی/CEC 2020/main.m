@@ -1,4 +1,5 @@
 %% Initialization
+
 clearvars;    % Clear only variables, not everything
 clc;          % Clear command window
 
@@ -16,14 +17,12 @@ addpath(addedPaths);
 
 % Initialize versioned results context (creates results_YY-MM-DD HH-MM and snapshots templates)
 ProjectContext('init', basePath);
-
-
 %% ---------------- Parallel control (GLOBAL FLAG) ----------------
-% Global switch:
-% true  -> enable parallel execution (parfor inside RunBenchmarkSuite)
+% Global switch: true -> enable parallel execution (parfor inside RunBenchmarkSuite) 
 % false -> run everything serially
+
 global RUN_PARALLEL;
-RUN_PARALLEL = false;   % <<< set to false to disable parallel mode
+RUN_PARALLEL = true;   % <<< set to false to disable parallel mode
 
 % Parameters
 maxRun = 4;          % Number of independent runs for each algorithm
@@ -68,16 +67,16 @@ CECsDim = { ...
 
 % Select which benchmark indices to run
 selectedIndex = 5:5;
-
 %% Main execution loop
+
 for index = selectedIndex
     fprintf('--- Running Benchmark Index %d ---\n', index);
     cd(basePath);
 
     RunBenchmarkSuite(index, populationNo, maxRun, maxItr, CECsDim{index});
 end
-
 %% Clean up
+
 rmpath(addedPaths);
 
 % Close the pool only if you want to free resources at the end
