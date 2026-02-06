@@ -1,5 +1,8 @@
-function RunBenchmarkSuite(CEC_Index, populationNo, maxRun, maxItr, CECsDim)
-    %% Benchmark Function
+function RunBenchmarkSuite(CEC_Index, populationNo, maxRun, maxItr, CECsDim, customAlgoList)
+    % RunBenchmarkSuite - Updated for GUI Integration
+    % Accepts optional 'customAlgoList' (cell array of strings)
+    
+    %% Benchmark Function Setup
     CECNames = ["CEC2005","CEC2014","CEC2017","CEC2019","CEC2020","CEC2022"];
 
     if CEC_Index == 7
@@ -9,14 +12,53 @@ function RunBenchmarkSuite(CEC_Index, populationNo, maxRun, maxItr, CECsDim)
 
     [costFunction, costFunctionDetails, nFunction] = Load_CEC_Function(CEC_Index);
 
-% Pre-detect benchmark families
-    % isRW = strcmp(func2str(costFunctionDetails), 'RW_Function');
-    
-
-
     %% Load algorithms list
-    algorithmFileAddress = '\AlgorithmsName.txt';
-    [algorithmsName, algorithms] = Get_algorithm(algorithmFileAddress);
+    % LOGIC: Check if GUI passed a specific list. 
+    % If yes, create handles and a temp file. If no, load default text file.
+
+    if nargin >= 6 && ~isempty(customAlgoList)
+        % --- GUI MODE ---
+        fprintf('Running with custom algorithm list selected in GUI.\n');
+
+        
+
+        
+        algorithmsName = customAlgoList{1}; % Ensure string array
+        fprintf('customAlgoList: %s\n', strjoin(algorithmsName));
+        algorithms = cell(length(algorithmsName), 1);
+        
+        
+        % 1. Convert names (strings) to Function Handles
+        for i = 1:length(algorithmsName)
+            try
+                disp(algorithmsName);
+                disp(strlength(algorithmsName));
+
+                algorithms{i} = str2func(algorithmsName(i));
+            catch
+                error('Could not convert algorithm "%s" to a function handle. Make sure the .m file exists.', algorithmsName(i));
+            end
+        end
+        
+        % 2. Create a TEMP text file so Conclusion() and Ploting() still work
+        % (These functions likely read a text file to get labels)
+        algorithmFileAddress = fullfile(pwd, 'Temp_GUI_AlgoList.txt');
+        fid = fopen(algorithmFileAddress, 'w');
+        for i = 1:length(algorithmsName)
+            fprintf(fid, '%s\n', algorithmsName(i));
+        end
+        fclose(fid);
+        
+    else
+        % --- DEFAULT MODE (No GUI selection) ---
+        algorithmFileAddress = 'AlgorithmsName.txt'; 
+        % Verify file exists to prevent hard crash
+        if ~exist(algorithmFileAddress, 'file')
+             % try looking one folder up or just warn
+             algorithmFileAddress = fullfile(pwd, 'AlgorithmsName.txt');
+        end
+        [algorithmsName, algorithms] = Get_algorithm(algorithmFileAddress);
+    end
 
     % Pre-detect benchmark families
     isCEC2017 = strcmp(func2str(costFunctionDetails), 'CEC_2017_Function');
