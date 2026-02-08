@@ -11,6 +11,8 @@ function [algorithmsName, algorithms] = Get_algorithm(algorithmFileAddress)
 
     %% Read the names of algorithms from the file
     algorithmsName = readlines(algorithmFileAddress);
+    
+    
 
     %% Convert the algorithm names from string to function handles
     algorithms = cell(size(algorithmsName, 1), 1);

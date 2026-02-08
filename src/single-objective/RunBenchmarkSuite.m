@@ -20,7 +20,7 @@ function RunBenchmarkSuite(CEC_Index, populationNo, maxRun, maxItr, CECsDim,cust
 %         for i = 1 : size(algorithmsName, 1)
 %             algorithms{i} = str2func(algorithmsName(i));
 %         end
-        algorithmFileAddress = '\AlgorithmsName_ui.txt';
+        algorithmFileAddress = '\selectedAlgos.txt';
         [algorithmsName, algorithms] = Get_algorithm(algorithmFileAddress);
        % fprintf("Selected algorithms: AAAAA" + strjoin(algorithmsName, ", "));
         

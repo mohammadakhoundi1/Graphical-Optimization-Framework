@@ -115,9 +115,11 @@ classdef OptimizationLauncher < matlab.apps.AppBase
                 
                 % Get Selected Algorithms (To pass to backend if supported)
                 selectedAlgos = app.AlgoListBox.Value;
-                selectedAlgos = strip(selectedAlgos);
                 fid = fopen('selectedAlgos.txt','w');
-                fprintf(fid,'%s\n',selectedAlgos{:});
+
+                % Join all elements with a newline character, then print the single string
+                fprintf(fid, '%s', strjoin(selectedAlgos, '\n'));
+
                 fclose(fid);
                 
 
