@@ -1,6 +1,7 @@
 # Metaheuristic Optimization Benchmarking Framework (MATLAB)
+<img width="1352" height="795" alt="image" src="https://github.com/user-attachments/assets/61a7c0de-b6b7-49eb-840d-ec7e92daf0c6" />
 
-A modular MATLAB framework for **benchmarking metaheuristic optimization algorithms** on **CEC benchmark suites (2005–2022)** and **real‑world/engineering problems**, with automated result logging, plotting, and Excel export.
+A Graphical modular MATLAB framework for **benchmarking metaheuristic optimization algorithms** on **CEC benchmark suites (2005–2022)** and **real‑world/engineering problems**, with automated result logging, plotting, and Excel export.
 
 > ⚠️ **Work in progress:** The codebase is actively developed. Some folders may contain duplicated/legacy scripts. This is expected for now.
 
@@ -96,7 +97,7 @@ ensureAlgorithmsSubmodule
 
 ### Single-objective benchmark runs
 
-Run the main entry script:
+Run the OptimizationLauncher.m entry script:
 
 ```matlab
 main
