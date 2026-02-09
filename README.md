@@ -159,12 +159,9 @@ These are used by the loaders/runners to dynamically discover and run algorithms
 
 ### Add a new algorithm
 
-1. Add your algorithm implementation under **`optimization algorithms/`** (preferred) or your custom module folder.
-2. Register its name in:
+1. Add your algorithm implementation by clicking on Optimization Framework Launcher under **`optimization algorithms/`** (preferred) or your custom module folder.
+2. Make sure it follows this structure [bestScore, bestPos, curve] = RS(LB, UB, Dim, populationNo, maxItr, objective)
 
-```
-prerequisites/AlgorithmsName.txt
-```
 
 3. Make sure it follows the expected interface used by `src/single-objective/Get_algorithm.m` (and related runner scripts).
 
