@@ -100,14 +100,9 @@ ensureAlgorithmsSubmodule
 Run the OptimizationLauncher.m entry script:
 
 ```matlab
-main
+OptimizationLauncher.m
 ```
 
-You may also find experimental/alternative runners:
-
-```matlab
-main2
-```
 
 ### Real-world/engineering problems
 
